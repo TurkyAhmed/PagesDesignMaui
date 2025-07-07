@@ -10,7 +10,6 @@ public partial class CoffeePage : ContentPage
 	{
 		InitializeComponent();
 
-
 		var coffeeList = GetAllCoffee();
 
         //tabViewCoffee.ItemsSource = coffeeList;
@@ -63,6 +62,5 @@ public partial class CoffeePage : ContentPage
 
         return coffees.ToList();
     }
-
 
 }

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+             x:Class="PagesDesignMaui.Pages.CoffeePages.CoffeePage"
+             Title="Coffee">
+
+    <!--<ContentPage.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Background"
+                                        Value="Transparent"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="Background"
+                                        Value= "Gray"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Background"
+                                        Value="DarkGrey"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="Background"
+                                        Value="LightBlue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>-->
+
+
+    <Grid RowDefinitions=".3*,.1*,.6*">
+
+        <Grid  Grid.RowSpan="2" RowDefinitions=".3*, .7*">
+            <Image Grid.RowSpan="2"
+                   Source="coffee.jpg"
+                   Aspect="Fill"/>
+
+            <Grid VerticalOptions="Center">
+                <Label Text="&#xf060;"
+                       FontFamily="FaB"
+                       FontSize="16"
+                       Margin="16,0,0,0"
+                       HorizontalOptions="Start"
+                       TextColor="White"/>
+
+                <Label 
+                    Text=" Categories"
+                    TextColor="white"
+                    HorizontalOptions="Center"/>
+            </Grid>
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto" ColumnDefinitions=".4*,.6*">
+                <Label
+                    Text="COFFEE"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Margin="16,0,0,0"
+                    FontSize="24"/>
+
+                <Label Grid.Row="1"
+                    Text="It's Great day for Coffee"
+                    TextColor="White"
+                    Margin="16,8,0,0"
+                    FontSize="16"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.RowSpan="2">
+            <Border BackgroundColor="FloralWhite">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30,30,0,0" />
+                </Border.StrokeShape>
+            </Border>
+
+            <sf:SfTabView x:Name="tabViewCoffee" IndicatorBackground="Goldenrod" ContentTransitionDuration ="500">
+
+                <sf:SfTabView.Items>
+
+                    <sf:SfTabItem Header="Call">
+                        <sf:SfTabItem.Content>
+                            <ListView x:Name="coffeeListView" RowHeight="120" Margin="0,16,0,0" SeparatorVisibility="None" SelectionMode="Single"  >
+                                
+                                <ListView.Header >
+                                    <Grid ColumnDefinitions=".1*,.8*,.1*" HeightRequest="50">
+                                        <Border Grid.Column="1" StrokeShape="RoundRectangle 30" HeightRequest="50">
+                                            <Grid >
+                                                <Entry HorizontalOptions="Fill" VerticalOptions="Fill"     Visual="Default"
+    BackgroundColor="Transparent"  ReturnType="Search" />
+                                                <Label Grid.Column="1" Text="&#xf002;" TextColor="LightGray" FontFamily="FaB" FontSize="20" Margin="0,0,16,0" VerticalOptions="Center"  HorizontalTextAlignment="End" />
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ListView.Header>
+                                
+                                <ListView.ItemTemplate >
+                                    <DataTemplate >
+                                        <ViewCell>
+                                            <Grid >
+
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup>
+                                                        <VisualState Name="Selected">
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="Purple" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+
+
+
+                                                <Border Margin="8,8,8,8">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="6" />
+                                                    </Border.StrokeShape>
+
+                                                    <Grid ColumnDefinitions=".2*, .6*, .2*" HeightRequest="100">
+
+                                                        <Grid Margin="6">
+                                                            <Border StrokeThickness="0">
+                                                                <Border.StrokeShape>
+                                                                    <RoundRectangle CornerRadius="12" />
+                                                                </Border.StrokeShape>
+
+                                                                <Image Source="{Binding ImageUrl}" Aspect="Fill"/>
+                                                            </Border>
+                                                        </Grid>
+
+                                                        <Grid Grid.Column="1" RowDefinitions=".2*, .5* ,.3*" Margin="8" RowSpacing="8">
+                                                            <Label
+                                                                Text="{Binding Name}"
+                                                                FontSize="16"
+                                                                FontAttributes="Bold"/>
+
+                                                            <Label Grid.Row="1"
+                                                                Text="{Binding Description}"
+                                                                FontSize="12"
+                                                                TextColor="Gray"/>
+
+                                                            <Label Grid.Row="2"
+                                                                Text="{Binding Price}"
+                                                                FontSize="16"
+                                                                FontAttributes="Bold"
+                                                                TextColor="DarkCyan"/>
+                                                        </Grid>
+
+                                                        <Grid Grid.Column="2">
+                                                            <Button 
+                                                                Text="&#xf07a;"
+                                                                FontFamily="FaB"
+                                                                FontSize="28"
+                                                                TextColor="Goldenrod"
+                                                                BackgroundColor="Transparent"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                    
+                                                </Border>
+                                               
+                                                <!--<VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup Name="CommonStates">
+                                                        <VisualState Name="Normal"></VisualState>
+                                                        <VisualState Name="Selected">
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="LightSkyBlue"></Setter>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>-->
+                                                
+                                            </Grid>
+                                        </ViewCell>
+
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </sf:SfTabItem.Content>
+                    </sf:SfTabItem>
+
+                    <sf:SfTabItem Header="Favorites">
+                        <sf:SfTabItem.Content>
+                            <ListView RowHeight="50">
+                                <ListView.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>James</x:String>
+                                        <x:String>Richard</x:String>
+                                        <x:String>Michael</x:String>
+                                        <x:String>Alex</x:String>
+                                        <x:String>Clara</x:String>
+                                    </x:Array>
+                                </ListView.ItemsSource>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Margin="10,5">
+                                                <Label
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Start"
+                                            TextColor="#666666"
+                                            FontSize="16"
+                                            Text="{Binding}"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </sf:SfTabItem.Content>
+                    </sf:SfTabItem>
+
+                    <sf:SfTabItem Header="Contacts">
+                        <sf:SfTabItem.Content>
+                            <ListView RowHeight="50">
+                                <ListView.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>James</x:String>
+                                        <x:String>Richard</x:String>
+                                        <x:String>Michael</x:String>
+                                        <x:String>Alex</x:String>
+                                        <x:String>Clara</x:String>
+                                    </x:Array>
+                                </ListView.ItemsSource>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Margin="10,5">
+                                                <Label
+                                                    VerticalOptions="Start"
+                                                    HorizontalOptions="Start"
+                                                    TextColor="#666666"
+                                                    FontSize="16"
+                                                    Text="{Binding}"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </sf:SfTabItem.Content>
+                    </sf:SfTabItem>
+                    
+                </sf:SfTabView.Items>
+            </sf:SfTabView>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
+
+

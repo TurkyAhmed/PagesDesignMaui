@@ -35,6 +35,10 @@
                 x:Name="Coffee"
                 Text="Coffee"
                 Clicked="Coffee_Clicked"/>
+            <Button
+                x:Name="CoffeeStartup"
+                Text="Coffee start up"
+                Clicked="CoffeeStartup_Clicked"/>
             
         </VerticalStackLayout>
     </ScrollView>

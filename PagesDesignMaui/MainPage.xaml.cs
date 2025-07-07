@@ -1,4 +1,5 @@
 ﻿using PagesDesignMaui.Pages;
+using PagesDesignMaui.Pages.CoffeePages;
 
 namespace PagesDesignMaui
 {
@@ -25,7 +26,7 @@ namespace PagesDesignMaui
 
         private void Coffee_Clicked(object sender, EventArgs e)
         {
-             Navigation.PushModalAsync(new Coffee());
+             Navigation.PushModalAsync(new CoffeePage());
         }
     }
 }

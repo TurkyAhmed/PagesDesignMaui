@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using PagesDesignMaui.Pages.CoffeePages;
+using PagesDesignMaui.Services;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace PagesDesignMaui
 {
@@ -9,6 +12,7 @@ namespace PagesDesignMaui
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -20,6 +24,8 @@ namespace PagesDesignMaui
 
 #if DEBUG
     		builder.Logging.AddDebug();
+
+            builder.Services.AddSingleton<CoffeeServices>();
 #endif
 
             return builder.Build();

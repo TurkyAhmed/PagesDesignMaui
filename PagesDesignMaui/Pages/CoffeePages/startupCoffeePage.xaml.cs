@@ -1,25 +1,18 @@
 using PagesDesignMaui.Models;
-using PagesDesignMaui.Services;
 
 namespace PagesDesignMaui.Pages.CoffeePages;
 
-public partial class CoffeePage : ContentPage
+public partial class startupCoffeePage : ContentPage
 {
-    
-	public CoffeePage()
+	public startupCoffeePage()
 	{
 		InitializeComponent();
 
+        List<Coffee> coffeeList = GetAllCoffee();
 
-		var coffeeList = GetAllCoffee();
-
-        //tabViewCoffee.ItemsSource = coffeeList;
-
-        coffeeListView.ItemsSource = coffeeList;
-
+        carouselViewCoffee.ItemsSource = coffeeList;
 
         this.BindingContext = this;
-        
     }
 
     public List<Coffee> GetAllCoffee()
@@ -63,6 +56,4 @@ public partial class CoffeePage : ContentPage
 
         return coffees.ToList();
     }
-
-
 }

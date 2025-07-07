@@ -28,5 +28,10 @@ namespace PagesDesignMaui
         {
              Navigation.PushModalAsync(new CoffeePage());
         }
+
+        private void CoffeeStartup_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new startupCoffeePage());
+        }
     }
 }

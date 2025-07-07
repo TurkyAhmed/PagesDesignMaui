@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models ="clr-namespace:PagesDesignMaui.Models"
+             x:Class="PagesDesignMaui.Pages.CoffeePages.startupCoffeePage"
+             Title="startupCoffeePage">
+
+    <Grid RowDefinitions=".6*,.1*,.1*,.1*,.1*">
+
+        <Grid Grid.Row="0">
+            <CarouselView x:Name="carouselViewCoffee"   >
+
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Coffee">
+                        <VerticalStackLayout >
+                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+
+            <!--Buttons for Carousel-->
+            <!--<IndicatorView x:Name="indicatorView"
+               HorizontalOptions="Center"
+               Margin="20"
+               IndicatorColor="LightGray" 
+               SelectedIndicatorColor="Goldenrod"
+               IndicatorsShape="Circle"/>-->
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Label Text="Cafe Shop" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="12">
+            <Label Text="Find the best coffee for you,  all you needs coffee" HorizontalTextAlignment="Center" VerticalOptions="Start" TextColor="Gray" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="12" VerticalOptions="End" >
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="12">
+                <Border HeightRequest="5" WidthRequest="25" BackgroundColor="LightGray" StrokeShape="RoundRectangle 4" StrokeThickness="0"/>
+                <Border HeightRequest="5" WidthRequest="25" BackgroundColor="LightGray" StrokeShape="RoundRectangle 4" StrokeThickness="0"/>
+                <Border HeightRequest="5" WidthRequest="25" BackgroundColor="Goldenrod" StrokeShape="RoundRectangle 4" StrokeThickness="0"/>
+            </HorizontalStackLayout>
+
+        </Grid>
+
+        <Grid Grid.Row="5" Margin="12" ColumnDefinitions="*,*" VerticalOptions="Center">
+            <Button Text="Skip Now"
+                    Background="Transparent"
+                    TextColor="Black" 
+                    BorderColor="Transparent"
+                    WidthRequest="120"
+                    HeightRequest="12"
+                    HorizontalOptions="Start"
+                    FontSize="16"
+                    />
+            
+            <Button Grid.Column="1"
+                    Text="Get Started"
+                    Background="Goldenrod"
+                    TextColor="White"
+                    WidthRequest="120"
+                    HeightRequest="10"
+                    CornerRadius="24"
+                    HorizontalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    />
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

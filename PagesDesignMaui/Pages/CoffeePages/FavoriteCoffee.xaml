@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel ="clr-namespace:PagesDesignMaui.ViewModels"
+             xmlns:model ="clr-namespace:PagesDesignMaui.Models"
+             x:Class="PagesDesignMaui.Pages.CoffeePages.FavoriteCoffee"
+             Title="Favorite Coffee">
+
+    <ContentPage.BindingContext>
+        <viewmodel:FavoriteCoffeeViewModel />
+    </ContentPage.BindingContext>
+    
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="8,0">
+        
+        <Grid Grid.Row="0" ColumnDefinitions="*,*" Margin="12">
+            <Label Text="&#xf060;"
+                   FontFamily="FaB"
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"
+                   VerticalOptions="Center"/>
+
+            <Label Grid.Row="0" 
+                   Grid.ColumnSpan="2"
+                   Text="Favorite"
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions=".2*,*,*,.2*" Padding="16">
+            <Border Grid.Column="1" Grid.ColumnSpan="2" StrokeShape="RoundRectangle 30" >
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="6" Padding="12,6">
+                    <Button Grid.Column="0" Text="Coffee" TextColor="White" CornerRadius="24" Background="Goldenrod" />
+                    <Button Grid.Column="1" Text="Drinks" TextColor="Black" CornerRadius="24" BorderColor="Transparent" Background="Transparent" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" Padding="32">
+            <Label Grid.Column="0"
+                   Text="More Popular"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+            <Label Grid.Column="1"
+                   Text="See all"
+                   TextColor="Purple"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="End"
+                   FontSize="16"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <ListView ItemsSource="{Binding CoffeePairs}" HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="16" Padding="10">
+
+                                <!-- First Coffee -->
+                                <Grid Grid.Column="0" >
+                                    <Border StrokeShape="RoundRectangle 12" Padding="12,6">
+                                        <VerticalStackLayout>
+                                            <Border StrokeShape="RoundRectangle 12" >
+                                                <Image Source="{Binding Coffee1.ImageUrl}" HeightRequest="150" Aspect="Center"/>
+                                            </Border>
+
+                                            <Label Text="{Binding Coffee1.Name}" FontSize="18" FontAttributes="Bold"  HorizontalTextAlignment="Center" Margin="0,8"/>
+
+                                            <Grid ColumnDefinitions=".7*,.3*">
+                                                <VerticalStackLayout Grid.Column="0">
+                                                    <HorizontalStackLayout VerticalOptions="Center">
+                                                        <Label Text="&#xf005;" FontFamily="FaB" TextColor="Goldenrod" FontSize="10" Margin="0,0,4,0" VerticalOptions="Center" />
+                                                        <Label Text="{Binding Coffee1.Rating}" />
+                                                    </HorizontalStackLayout>
+                                                    <HorizontalStackLayout>
+                                                        <Label Text=" $" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
+                                                        <Label Text="{Binding Coffee1.Price}" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+                                                
+                                                <Label Grid.Column="1"  Text=" &#xf07a;" FontSize="28" FontFamily="FaB" Background="Transparent" VerticalOptions="Center" TextColor="Goldenrod" HorizontalOptions="Center"/>
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+
+                                <!-- Second Coffee (if exists) -->
+                                <Grid Grid.Column="1" >
+                                    <Border StrokeShape="RoundRectangle 12" Padding="16,6">
+                                        <VerticalStackLayout>
+                                            <Border StrokeShape="RoundRectangle 12" >
+                                                <Image Source="{Binding Coffee2.ImageUrl}" HeightRequest="150" Aspect="Center"/>
+                                            </Border>
+
+                                            <Label Text="{Binding Coffee2.Name}" FontSize="18" FontAttributes="Bold"  HorizontalTextAlignment="Center" Margin="0,8"/>
+
+                                            <Grid ColumnDefinitions=".8*,.2*">
+                                                <VerticalStackLayout Grid.Column="0">
+                                                    <HorizontalStackLayout>
+                                                        <Label Text="&#xf005;" FontFamily="FaB" TextColor="Goldenrod" FontSize="10" Margin="0,0,4,0" VerticalTextAlignment="Center"/>
+                                                        <Label Text="{Binding Coffee2.Rating}" />
+                                                    </HorizontalStackLayout>
+                                                    <HorizontalStackLayout>
+                                                        <Label Text="$" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
+                                                        <Label Text="{Binding Coffee2.Price}" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+
+                                                <Label Grid.Column="1"  Text=" &#xf07a;" FontSize="28" FontFamily="FaB" Background="Transparent" VerticalOptions="Center" TextColor="Goldenrod" HorizontalOptions="Center"/>
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</ContentPage>

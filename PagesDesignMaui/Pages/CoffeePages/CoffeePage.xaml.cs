@@ -16,7 +16,6 @@ public partial class CoffeePage : ContentPage
 
         coffeeListView.ItemsSource = coffeeList;
 
-
         this.BindingContext = this;
         
     }
@@ -25,16 +24,16 @@ public partial class CoffeePage : ContentPage
     {
         List<Coffee> coffees = new List<Coffee>
     {
-        new Coffee
+        new Coffee 
         {
             Id = 1,
             Name = "Espresso",
             Description = "A strong and bold coffee made by forcing hot water through finely-ground coffee beans.",
             ImageUrl = "coffee.jpg",
 			//ImageUrl = "espresso.jpg",
-			Price = "$3.00",
+			Price = 3.00m,
             Category = "Espresso",
-            Rating = "4.5"
+            Rating = 4.5m
         },
         new Coffee
         {
@@ -43,9 +42,9 @@ public partial class CoffeePage : ContentPage
             Description = "A creamy coffee made with espresso and steamed milk, topped with a light layer of foam.",
             ImageUrl = "coffee.jpg",
 			//ImageUrl = "latte.jpg",
-			Price = "$4.00",
+			Price = 4.00m,
             Category = "Milk Coffee",
-            Rating = "4.7"
+            Rating = 4.7m
         },
         new Coffee
         {
@@ -54,9 +53,9 @@ public partial class CoffeePage : ContentPage
             Description = "A rich coffee made with equal parts espresso, steamed milk, and frothed milk.",
 			//ImageUrl = "cappuccino.jpg",
 			ImageUrl = "coffee.jpg",
-            Price = "$4.50",
+            Price = 4.5m,
             Category = "Milk Coffee",
-            Rating = "4.6"
+            Rating = 4.0m
         }
     };
 

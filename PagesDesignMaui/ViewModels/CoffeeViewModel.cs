@@ -1,6 +1,8 @@
 ﻿using PagesDesignMaui.Models;
+using PagesDesignMaui.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace PagesDesignMaui.ViewModels
 {
@@ -21,6 +23,7 @@ namespace PagesDesignMaui.ViewModels
         private decimal price;
         private string category;
         private decimal rating;
+        private Coffee selectedCoffee;
         #endregion
 
         #region Properties
@@ -102,9 +105,38 @@ namespace PagesDesignMaui.ViewModels
             }
         }
 
+        public Coffee SelectedCoffee 
+        { 
+            get => selectedCoffee; 
+            set 
+            { 
+                if (selectedCoffee != value)
+                {
+                    selectedCoffee = value;
+
+                    Name = selectedCoffee.Name;
+                    Description = selectedCoffee.Description;
+                    ImageUrl = selectedCoffee.ImageUrl ?? string.Empty;
+                    Price = value?.Price ?? 0.0m;
+                    Category = selectedCoffee.Category ?? string.Empty;
+                    Rating = value?.Rating ?? 0.0m;
+
+                    OnPropertyChanged(nameof(SelectedCoffee));
+                }
+            }
+        }
+
         public ObservableCollection<Coffee> CoffeeCollection { get; set; }
 
         #endregion
+
+        #region Command Properties
+        public ICommand AddCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        #endregion
+
+        private readonly ICoffeeServices _coffeeService;
 
         public CoffeeViewModel()
         {
@@ -141,9 +173,65 @@ namespace PagesDesignMaui.ViewModels
                     Rating = 4.6m
                 }
             };
+
+            //LoadData();
+
+            AddCommand = new Command(AddCoffee);
+
+            EditCommand = new Command(UpdateCoffee);
+
+            DeleteCommand = new Command(DeleteCoffee);
+
+
         }
 
+        //public async void LoadData()
+        //{
+        //    CoffeeCollection.Clear();
+
+        //    var coffeeList = _coffeeService.GetAllCoffee();
+        //    foreach (var coffee in coffeeList)
+        //    {
+        //        CoffeeCollection.Add(coffee);
+        //    }
+        //}
 
 
+        private void DeleteCoffee(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdateCoffee(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddCoffee(object obj)
+        {
+            var newId = CoffeeCollection.Count() > 0 ? CoffeeCollection.Max(n => n.Id + 1) : 1;
+
+            var coffee = new Coffee
+            {
+                Id = newId,
+                Name = Name,
+                Description = Description,
+                ImageUrl = "coffee.jpg",
+                Price = Price,
+                Category = Category,
+                Rating = Rating
+            };
+
+            CoffeeCollection.Add(coffee);
+
+            ClearData();
+        }
+
+        public void ClearData()
+        {
+            Name = Description = ImageUrl = Category = string.Empty;
+
+            Price = Rating = 0.0m;
+        }
     }
 }

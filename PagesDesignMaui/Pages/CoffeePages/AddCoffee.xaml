@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PagesDesignMaui.ViewModels"
+             xmlns:models="clr-namespace:PagesDesignMaui.Models"
+             x:Class="PagesDesignMaui.Pages.CoffeePages.AddCoffee"
+             Title="Add Coffee">
+    
+    <ContentPage.BindingContext>
+        <vm:CoffeeViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*" Margin="16" RowSpacing="8">
+
+        <VerticalStackLayout Grid.Row="0">
+            <Label Text="Name" FontSize="16" />
+            <Entry x:Name="entryName" Text="{Binding Name , Mode=TwoWay }" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1">
+            <Label Text="Description" FontSize="16" />
+            <Entry x:Name="entryDescription" Text="{Binding Description}"  />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="2">
+            <Label Text="Price" FontSize="16" />
+            <Entry x:Name="entryPrice" Text="{Binding Price}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="3">
+            <Label Text="Rating" FontSize="16" />
+            <Entry x:Name="entryRating" Text="{Binding Rating}" />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout Grid.Row="4">
+            <Label Text="Image" FontSize="16" />
+            <!--<Entry x:Name="entryRating" Text="{Binding Rating}" />-->
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="5" HorizontalOptions="Center" Spacing="16">
+            <Button Text="Add" Command="{Binding AddCommand}" WidthRequest="150" Background="Goldenrod"/>
+            <Button Text="Edit" Command="{Binding EditCommand}" WidthRequest="150" Background="Blue" />
+            <Button Text="Delete" Command="{Binding DeleteCommand}" WidthRequest="150" Background="Red" />
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="6">
+            <ListView ItemsSource="{Binding CoffeeCollection}" SelectedItem="{Binding SelectedCoffee}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Text="{Binding Name}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </Grid>
+    
+</ContentPage>

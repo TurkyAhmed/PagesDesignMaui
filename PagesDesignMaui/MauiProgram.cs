@@ -25,7 +25,7 @@ namespace PagesDesignMaui
 #if DEBUG
     		builder.Logging.AddDebug();
 
-            builder.Services.AddSingleton<CoffeeServices>();
+            builder.Services.AddSingleton<ICoffeeServices, CoffeeServices>();
 #endif
 
             return builder.Build();

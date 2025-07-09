@@ -53,31 +53,36 @@
         </Grid>
 
         <Grid Grid.Row="3">
-            <ListView ItemsSource="{Binding CoffeePairs}" HasUnevenRows="True" SeparatorVisibility="None">
-                <ListView.ItemTemplate>
+            <CollectionView  ItemsSource="{Binding FavoriteCoffees}" >
+                
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="16" HorizontalItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="*,*" ColumnSpacing="16" Padding="10">
+
+                            <!--<Grid ColumnDefinitions="*,*" ColumnSpacing="16" Padding="10">-->
 
                                 <!-- First Coffee -->
-                                <Grid Grid.Column="0" >
+                                <Grid>
                                     <Border StrokeShape="RoundRectangle 12" Padding="12,6">
                                         <VerticalStackLayout>
                                             <Border StrokeShape="RoundRectangle 12" >
-                                                <Image Source="{Binding Coffee1.ImageUrl}" HeightRequest="150" Aspect="Center"/>
+                                                <Image Source="{Binding ImageUrl}" HeightRequest="150" Aspect="Center"/>
                                             </Border>
 
-                                            <Label Text="{Binding Coffee1.Name}" FontSize="18" FontAttributes="Bold"  HorizontalTextAlignment="Center" Margin="0,8"/>
+                                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"  HorizontalTextAlignment="Center" Margin="0,8"/>
 
                                             <Grid ColumnDefinitions=".7*,.3*">
                                                 <VerticalStackLayout Grid.Column="0">
                                                     <HorizontalStackLayout VerticalOptions="Center">
                                                         <Label Text="&#xf005;" FontFamily="FaB" TextColor="Goldenrod" FontSize="10" Margin="0,0,4,0" VerticalOptions="Center" />
-                                                        <Label Text="{Binding Coffee1.Rating}" />
+                                                        <Label Text="{Binding Rating}" />
                                                     </HorizontalStackLayout>
                                                     <HorizontalStackLayout>
                                                         <Label Text=" $" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
-                                                        <Label Text="{Binding Coffee1.Price}" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
+                                                        <Label Text="{Binding Price}" FontSize="16" FontAttributes="Bold" TextColor="Goldenrod" />
                                                     </HorizontalStackLayout>
                                                 </VerticalStackLayout>
                                                 
@@ -88,7 +93,7 @@
                                 </Grid>
 
                                 <!-- Second Coffee (if exists) -->
-                                <Grid Grid.Column="1" >
+                                <!--<Grid Grid.Column="1" >
                                     <Border StrokeShape="RoundRectangle 12" Padding="16,6">
                                         <VerticalStackLayout>
                                             <Border StrokeShape="RoundRectangle 12" >
@@ -113,14 +118,14 @@
                                             </Grid>
                                         </VerticalStackLayout>
                                     </Border>
-                                </Grid>
+                                </Grid>-->
 
 
-                            </Grid>
-                        </ViewCell>
+                            <!--</Grid>-->
+
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
     </Grid>
 </ContentPage>
